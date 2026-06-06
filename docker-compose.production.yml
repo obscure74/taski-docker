@@ -15,8 +15,6 @@ services:
   backend:
     image: ${DOCKER_USERNAME:-obscure74}/taski_backend:latest
     env_file: .env
-    volumes:
-      - static:/backend_static
     depends_on:
       - db
     restart: always
@@ -26,7 +24,6 @@ services:
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
-    restart: always
 
   gateway:
     image: ${DOCKER_USERNAME:-obscure74}/taski_gateway:latest
